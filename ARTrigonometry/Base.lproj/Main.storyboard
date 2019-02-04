@@ -21,18 +21,38 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fE0-nW-Mf0">
                                 <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                             </arscnView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hkp-zW-HJi">
+                                <rect key="frame" x="377" y="969" width="81" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="section"/>
+                                <connections>
+                                    <action selector="sectionButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="onJ-mm-fQb"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BAP-Cg-9Xr">
+                                <rect key="frame" x="0.0" y="896" width="834" height="216"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="XZy-RU-RO5"/>
+                                </constraints>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="fE0-nW-Mf0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ReR-Cn-jdO"/>
                             <constraint firstItem="fE0-nW-Mf0" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="cOe-55-hbg"/>
                             <constraint firstItem="fE0-nW-Mf0" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="mXk-5T-J1b"/>
+                            <constraint firstItem="BAP-Cg-9Xr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="szD-wb-eB0"/>
+                            <constraint firstAttribute="bottom" secondItem="BAP-Cg-9Xr" secondAttribute="bottom" id="wFS-tW-We4"/>
+                            <constraint firstAttribute="trailing" secondItem="BAP-Cg-9Xr" secondAttribute="trailing" id="yge-7O-axy"/>
                             <constraint firstItem="fE0-nW-Mf0" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="zaS-9E-VrT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="picker" destination="BAP-Cg-9Xr" id="nrP-b7-BEG"/>
                         <outlet property="sceneView" destination="fE0-nW-Mf0" id="71W-R5-7ZR"/>
+                        <outlet property="sectionButton" destination="hkp-zW-HJi" id="Dqa-o4-BAW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -40,4 +60,7 @@
             <point key="canvasLocation" x="137.41007194244605" y="132.73381294964028"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="section" width="384" height="384"/>
+    </resources>
 </document>

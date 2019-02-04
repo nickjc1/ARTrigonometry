@@ -12,6 +12,7 @@
 		DF90DA732204E18D009CC3F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF90DA712204E18D009CC3F9 /* Main.storyboard */; };
 		DF90DA752204E18E009CC3F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF90DA742204E18E009CC3F9 /* Assets.xcassets */; };
 		DF90DA782204E18E009CC3F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF90DA762204E18E009CC3F9 /* LaunchScreen.storyboard */; };
+		DF90DA802205094A009CC3F9 /* section.png in Resources */ = {isa = PBXBuildFile; fileRef = DF90DA7F2205094A009CC3F9 /* section.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		DF90DA742204E18E009CC3F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DF90DA772204E18E009CC3F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF90DA792204E18E009CC3F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF90DA7F2205094A009CC3F9 /* section.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = section.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 				DF90DA6F2204E18D009CC3F9 /* ViewController.swift */,
 				DF90DA712204E18D009CC3F9 /* Main.storyboard */,
 				DF90DA742204E18E009CC3F9 /* Assets.xcassets */,
+				DF90DA7F2205094A009CC3F9 /* section.png */,
 				DF90DA762204E18E009CC3F9 /* LaunchScreen.storyboard */,
 				DF90DA792204E18E009CC3F9 /* Info.plist */,
 			);
@@ -125,6 +128,7 @@
 				DF90DA782204E18E009CC3F9 /* LaunchScreen.storyboard in Resources */,
 				DF90DA752204E18E009CC3F9 /* Assets.xcassets in Resources */,
 				DF90DA732204E18D009CC3F9 /* Main.storyboard in Resources */,
+				DF90DA802205094A009CC3F9 /* section.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
