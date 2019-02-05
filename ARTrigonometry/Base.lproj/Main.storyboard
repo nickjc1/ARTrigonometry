@@ -36,12 +36,45 @@
                                     <constraint firstAttribute="height" constant="216" id="XZy-RU-RO5"/>
                                 </constraints>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="gXt-P8-2xx">
+                                <rect key="frame" x="734" y="846.5" width="75" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="0U9-Ne-rA1"/>
+                                    <constraint firstAttribute="width" constant="75" id="LhT-ds-wTB"/>
+                                </constraints>
+                                <state key="normal">
+                                    <string key="title">   Count 
+ClockWise</string>
+                                    <color key="titleColor" red="0.45138680930000002" green="0.99309605359999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="countClockWiseClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gy6-zF-uDf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHZ-XT-McL">
+                                <rect key="frame" x="734" y="801" width="75" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="NQr-2a-fBM"/>
+                                </constraints>
+                                <state key="normal" title="ClockWise">
+                                    <color key="titleColor" red="0.45138680930000002" green="0.99309605359999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="clockWiseClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VuP-Xv-wZi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="gXt-P8-2xx" firstAttribute="leading" secondItem="HHZ-XT-McL" secondAttribute="leading" id="9gb-ex-Dn4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gXt-P8-2xx" secondAttribute="trailing" constant="5" id="JYe-mX-Jwl"/>
                             <constraint firstItem="fE0-nW-Mf0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ReR-Cn-jdO"/>
                             <constraint firstItem="fE0-nW-Mf0" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="cOe-55-hbg"/>
                             <constraint firstItem="fE0-nW-Mf0" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="mXk-5T-J1b"/>
+                            <constraint firstItem="gXt-P8-2xx" firstAttribute="top" secondItem="HHZ-XT-McL" secondAttribute="bottom" constant="18.5" id="maR-Wf-HuB"/>
+                            <constraint firstItem="HHZ-XT-McL" firstAttribute="top" secondItem="fE0-nW-Mf0" secondAttribute="bottom" constant="-311" id="pHN-ZM-4SH"/>
+                            <constraint firstItem="gXt-P8-2xx" firstAttribute="trailing" secondItem="HHZ-XT-McL" secondAttribute="trailing" id="qgk-MX-IRq"/>
                             <constraint firstItem="BAP-Cg-9Xr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="szD-wb-eB0"/>
                             <constraint firstAttribute="bottom" secondItem="BAP-Cg-9Xr" secondAttribute="bottom" id="wFS-tW-We4"/>
                             <constraint firstAttribute="trailing" secondItem="BAP-Cg-9Xr" secondAttribute="trailing" id="yge-7O-axy"/>
@@ -50,6 +83,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="clockWiseButton" destination="HHZ-XT-McL" id="7r6-Se-ZsO"/>
+                        <outlet property="countClockWiseButton" destination="gXt-P8-2xx" id="hNo-rs-9cd"/>
                         <outlet property="picker" destination="BAP-Cg-9Xr" id="nrP-b7-BEG"/>
                         <outlet property="sceneView" destination="fE0-nW-Mf0" id="71W-R5-7ZR"/>
                         <outlet property="sectionButton" destination="hkp-zW-HJi" id="Dqa-o4-BAW"/>
