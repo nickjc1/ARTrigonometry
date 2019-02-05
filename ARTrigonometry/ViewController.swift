@@ -70,15 +70,16 @@ class ViewController: UIViewController {
     }
     
     //movebutton for section1
+    var theAngle = 0
     @IBAction func clockWiseClicked(_ sender: UIButton) {
         if let myRootNode = theNodes?[0] {
-             action(node: myRootNode, clockWise: true)
+             theAngle = action(node: myRootNode, clockWise: true, angle: theAngle)
         }
     }
     
     @IBAction func countClockWiseClicked(_ sender: UIButton) {
         if let myRootNode = theNodes?[0] {
-            action(node: myRootNode, clockWise: false)
+            theAngle = action(node: myRootNode, clockWise: false, angle: theAngle)
         }
     }
     
@@ -179,22 +180,48 @@ extension ViewController {
         line.position = SCNVector3(0.05, 0, 0)
         myRootNode.addChildNode(line)
         
+        let text = SCNText(string: "hello", extrusionDepth: 1)
+        text.firstMaterial?.diffuse.contents = UIColor.cyan
+        text.firstMaterial?.specular.contents = UIColor.white
+        let textNode = SCNNode(geometry: text)
+        textNode.position = SCNVector3(0.1, 0.1, -0.5)
+        textNode.scale = SCNVector3(0.001, 0.001, 0.001)
+        sceneView.scene.rootNode.addChildNode(textNode)
+        nodes.append(textNode)
+
         return nodes
     }
     
-    func action(node: SCNNode, clockWise: Bool) {
+    
+    func action(node: SCNNode, clockWise: Bool, angle: Int) -> Int{
         var rotateDegree: CGFloat
-        
+        var a = angle
         if clockWise {
             rotateDegree = CGFloat(-15.degreesToRadians)
+            a -= 15
         } else {
             rotateDegree = CGFloat(15.degreesToRadians)
+            a += 15
         }
         
         let action = SCNAction.rotateBy(x: 0, y: 0, z: rotateDegree, duration: 1)
-
         node.runAction(action)
+        
+        let sina = Double(round(sin(Double(a.degreesToRadians))*1000)/1000)
+        let cosa = Double(round(cos(Double(a.degreesToRadians))*1000)/1000)
+        
+        let str = "sin⍺ = \(sina)\ncos⍺ = \(cosa)"
+        
+        if let textNode = theNodes?[1] {
+            let temText = textNode.geometry as! SCNText
+            temText.string = str
+            theNodes?[1].geometry = temText
+        }
+        
+        return a
+        
     }
+
     
 }
 

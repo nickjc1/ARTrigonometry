@@ -58,7 +58,7 @@ ClockWise</string>
                                     <constraint firstAttribute="height" constant="27" id="NQr-2a-fBM"/>
                                 </constraints>
                                 <state key="normal" title="ClockWise">
-                                    <color key="titleColor" red="0.45138680930000002" green="0.99309605359999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.59903132915496826" green="0.97989553213119507" blue="0.99607092142105103" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
                                     <action selector="clockWiseClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VuP-Xv-wZi"/>
