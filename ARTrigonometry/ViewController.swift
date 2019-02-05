@@ -65,13 +65,13 @@ class ViewController: UIViewController {
     //movebutton for section1
     @IBAction func clockWiseClicked(_ sender: UIButton) {
         if let myRootNode = theNodes?[0] {
-             action(node: myRootNode, countWise: true)
+             action(node: myRootNode, clockWise: true)
         }
     }
     
     @IBAction func countClockWiseClicked(_ sender: UIButton) {
         if let myRootNode = theNodes?[0] {
-            action(node: myRootNode, countWise: false)
+            action(node: myRootNode, clockWise: false)
         }
     }
     
@@ -176,13 +176,13 @@ extension ViewController {
         return nodes
     }
     
-    func action(node: SCNNode, countWise: Bool) {
+    func action(node: SCNNode, clockWise: Bool) {
         var rotateDegree: CGFloat
         
-        if countWise {
-            rotateDegree = CGFloat(15.degreesToRadians)
-        } else {
+        if clockWise {
             rotateDegree = CGFloat(-15.degreesToRadians)
+        } else {
+            rotateDegree = CGFloat(15.degreesToRadians)
         }
         
         let action = SCNAction.rotateBy(x: 0, y: 0, z: rotateDegree, duration: 1)
