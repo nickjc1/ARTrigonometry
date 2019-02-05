@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         
         sceneView.session.run(configuration)
         
-        sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
+        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
         sceneView.autoenablesDefaultLighting = true
         
         //set up pickview delegate and datasource
@@ -60,6 +60,13 @@ class ViewController: UIViewController {
         
         theNodes = []
         
+        //reset session, clean all nodes
+        sceneView.session.pause()
+        sceneView.scene.rootNode.enumerateChildNodes {
+            (node, _) in
+            node.removeFromParentNode()
+        }
+        sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
     }
     
     //movebutton for section1
@@ -101,7 +108,7 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 }
 
-//: MARK ARObject for section1
+//: MARK ARObjects for section1
 extension ViewController {
     func arAnimation(for _row: Int) {
         if _row == 0 {
@@ -109,7 +116,6 @@ extension ViewController {
             clockWiseButton.isHidden = false
             countClockWiseButton.isHidden = false
         } else if _row == 1 {
-            theNodes = []
         }
     }
     
