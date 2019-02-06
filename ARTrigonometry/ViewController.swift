@@ -30,7 +30,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         sceneView.session.run(configuration)
-        
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
         sceneView.autoenablesDefaultLighting = true
         
@@ -39,8 +38,6 @@ class ViewController: UIViewController {
         picker.dataSource = self
         picker.isHidden = true
         sectionButton.isHidden = false
-//        clockWiseButton.isHidden = true
-//        countClockWiseButton.isHidden = true
         
         //add each section's buttons into an array for hidden when touch section selector button
         buttons = [clockWiseButton, countClockWiseButton]
@@ -60,6 +57,9 @@ class ViewController: UIViewController {
         
         theNodes = []
         
+        //reset theAngle variable from section1
+        theAngle = 0
+        
         //reset session, clean all nodes
         sceneView.session.pause()
         sceneView.scene.rootNode.enumerateChildNodes {
@@ -69,17 +69,17 @@ class ViewController: UIViewController {
         sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
     }
     
-    //movebutton for section1
+    //moveButton for section1
     var theAngle = 0
     @IBAction func clockWiseClicked(_ sender: UIButton) {
         if let myRootNode = theNodes?[0] {
-             theAngle = action(node: myRootNode, clockWise: true, angle: theAngle)
+            theAngle = action(myRootNode, clockWise: true, angle: theAngle)
         }
     }
     
     @IBAction func countClockWiseClicked(_ sender: UIButton) {
         if let myRootNode = theNodes?[0] {
-            theAngle = action(node: myRootNode, clockWise: false, angle: theAngle)
+            theAngle = action(myRootNode, clockWise: false, angle: theAngle)
         }
     }
     
@@ -122,7 +122,7 @@ extension ViewController {
     
     func unitCircle() -> [SCNNode] {
         
-        var nodes = [SCNNode]()
+        var nodes = [SCNNode]() // [0]: myRootNode; [1]: textNode
         
         let circle = SCNNode()
         circle.geometry = SCNTorus(ringRadius: 0.1, pipeRadius: 0.003)
@@ -135,7 +135,6 @@ extension ViewController {
         let myRootNode = SCNNode()
         myRootNode.position = SCNVector3(0, 0, -0.5)
         self.sceneView.scene.rootNode.addChildNode(myRootNode)
-        nodes.append(myRootNode)
         
         let point = SCNNode()
         point.geometry = SCNSphere(radius: 0.005)
@@ -172,6 +171,20 @@ extension ViewController {
         vArrow.position = SCNVector3(0, 0, -0.155)
         circle.addChildNode(vArrow)
         
+        let oneX = SCNNode()
+        oneX.geometry = SCNText(string: "1", extrusionDepth: 0.5)
+        oneX.geometry?.firstMaterial?.diffuse.contents = UIColor.black
+        oneX.position = SCNVector3(0.101, 0.001, -0.5)
+        oneX.scale = SCNVector3(0.001, 0.001, 0.001)
+        sceneView.scene.rootNode.addChildNode(oneX)
+        
+        let oneY = SCNNode()
+        oneY.geometry = SCNText(string: "1", extrusionDepth: 0.5)
+        oneY.geometry?.firstMaterial?.diffuse.contents = UIColor.black
+        oneY.position = SCNVector3(0.001, 0.1, -0.5)
+        oneY.scale = SCNVector3(0.001, 0.001, 0.001)
+        sceneView.scene.rootNode.addChildNode(oneY)
+        
         let line = SCNNode()
         line.geometry = SCNCylinder(radius: 0.003, height: 0.1)
         line.geometry?.firstMaterial?.diffuse.contents = UIColor.red
@@ -180,20 +193,24 @@ extension ViewController {
         line.position = SCNVector3(0.05, 0, 0)
         myRootNode.addChildNode(line)
         
-        let text = SCNText(string: "hello", extrusionDepth: 1)
+        
+        let text = SCNText(string: "Welcome to AR Trigonometry!", extrusionDepth: 1)
         text.firstMaterial?.diffuse.contents = UIColor.cyan
         text.firstMaterial?.specular.contents = UIColor.white
         let textNode = SCNNode(geometry: text)
         textNode.position = SCNVector3(0.1, 0.1, -0.5)
         textNode.scale = SCNVector3(0.001, 0.001, 0.001)
         sceneView.scene.rootNode.addChildNode(textNode)
+        
+        nodes.append(myRootNode)
         nodes.append(textNode)
 
         return nodes
     }
     
     
-    func action(node: SCNNode, clockWise: Bool, angle: Int) -> Int{
+    func action(_ myRootNode: SCNNode, clockWise: Bool, angle: Int) -> Int {
+        
         var rotateDegree: CGFloat
         var a = angle
         if clockWise {
@@ -205,13 +222,18 @@ extension ViewController {
         }
         
         let action = SCNAction.rotateBy(x: 0, y: 0, z: rotateDegree, duration: 1)
-        node.runAction(action)
+        myRootNode.runAction(action)
         
-        let sina = Double(round(sin(Double(a.degreesToRadians))*1000)/1000)
-        let cosa = Double(round(cos(Double(a.degreesToRadians))*1000)/1000)
         
+        var sina = sin(Double(a.degreesToRadians))
+        var cosa = cos(Double(a.degreesToRadians))
+        
+        createVerticalLine(height: CGFloat(abs(sina*0.1)), px: cosa*0.1, py: 0.1*sina/2, pz: -0.5)
+        sina = Double(round(sina*1000)/1000)
+        cosa = Double(round(cosa*1000)/1000)
         let str = "sin⍺ = \(sina)\ncos⍺ = \(cosa)"
         
+        //get textNode and update textnode's string value
         if let textNode = theNodes?[1] {
             let temText = textNode.geometry as! SCNText
             temText.string = str
@@ -219,10 +241,23 @@ extension ViewController {
         }
         
         return a
-        
     }
-
     
+    func createVerticalLine(height: CGFloat, px: Double, py: Double, pz: Double) {
+        let lineVertical = SCNCylinder(radius: 0.0022, height: height)
+        lineVertical.firstMaterial?.diffuse.contents = UIColor.green
+        lineVertical.firstMaterial?.specular.contents = UIColor.white
+        let node = SCNNode(geometry: lineVertical)
+        node.name = "lineVertical"
+        node.position = SCNVector3(px, py, pz)
+        sceneView.scene.rootNode.enumerateChildNodes {
+            (node, _) in
+            if node.name == "lineVertical" {
+                node.removeFromParentNode()
+            }
+        }
+        sceneView.scene.rootNode.addChildNode(node)
+    }
 }
 
 extension Int {
