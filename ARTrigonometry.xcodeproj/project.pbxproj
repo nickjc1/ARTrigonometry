@@ -13,6 +13,8 @@
 		DF90DA752204E18E009CC3F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF90DA742204E18E009CC3F9 /* Assets.xcassets */; };
 		DF90DA782204E18E009CC3F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF90DA762204E18E009CC3F9 /* LaunchScreen.storyboard */; };
 		DF90DA802205094A009CC3F9 /* section.png in Resources */ = {isa = PBXBuildFile; fileRef = DF90DA7F2205094A009CC3F9 /* section.png */; };
+		DF94C452220DDA1700D0171C /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = DF94C451220DDA1700D0171C /* plus.png */; };
+		DF94C454220DDA1E00D0171C /* minus.png in Resources */ = {isa = PBXBuildFile; fileRef = DF94C453220DDA1E00D0171C /* minus.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		DF90DA772204E18E009CC3F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF90DA792204E18E009CC3F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF90DA7F2205094A009CC3F9 /* section.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = section.png; sourceTree = "<group>"; };
+		DF94C451220DDA1700D0171C /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
+		DF94C453220DDA1E00D0171C /* minus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minus.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				DF90DA6F2204E18D009CC3F9 /* ViewController.swift */,
 				DF90DA712204E18D009CC3F9 /* Main.storyboard */,
 				DF90DA742204E18E009CC3F9 /* Assets.xcassets */,
+				DF94C451220DDA1700D0171C /* plus.png */,
+				DF94C453220DDA1E00D0171C /* minus.png */,
 				DF90DA7F2205094A009CC3F9 /* section.png */,
 				DF90DA762204E18E009CC3F9 /* LaunchScreen.storyboard */,
 				DF90DA792204E18E009CC3F9 /* Info.plist */,
@@ -126,6 +132,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF90DA782204E18E009CC3F9 /* LaunchScreen.storyboard in Resources */,
+				DF94C452220DDA1700D0171C /* plus.png in Resources */,
+				DF94C454220DDA1E00D0171C /* minus.png in Resources */,
 				DF90DA752204E18E009CC3F9 /* Assets.xcassets in Resources */,
 				DF90DA732204E18D009CC3F9 /* Main.storyboard in Resources */,
 				DF90DA802205094A009CC3F9 /* section.png in Resources */,

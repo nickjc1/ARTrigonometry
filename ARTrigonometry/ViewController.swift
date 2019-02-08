@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     var buttons = [UIButton]()
     
     
-    var theNodes: [SCNNode]? // store some important scnNodes generate from function in extension for later use.
+    var theNodes: [SCNNode]? // store some important scnNodes generate from functions in extension for later use.
     
     let configuration = ARWorldTrackingConfiguration()
     
@@ -39,12 +39,15 @@ class ViewController: UIViewController {
         picker.isHidden = true
         sectionButton.isHidden = false
         
+//        sectionButton.backgroundColor = UIColor.white
+        
         //add each section's buttons into an array for hidden when touch section selector button
         buttons = [clockWiseButton, countClockWiseButton]
         for button in buttons {
-            button.isHidden = true
+            DispatchQueue.main.async {
+                button.isHidden = true
+            }
         }
-        
     }
     
     @IBAction func sectionButtonClicked(_ sender: UIButton) {
@@ -52,7 +55,9 @@ class ViewController: UIViewController {
         sectionButton.isHidden = true
         
         for button in buttons {
-            button.isHidden = true
+            DispatchQueue.main.async {
+                button.isHidden = true
+            }
         }
         
         theNodes = []
@@ -82,8 +87,6 @@ class ViewController: UIViewController {
             theAngle = action(myRootNode, clockWise: false, angle: theAngle)
         }
     }
-    
-    
 }
 
 
@@ -195,7 +198,7 @@ extension ViewController {
         
         
         let text = SCNText(string: "Welcome to AR Trigonometry!", extrusionDepth: 1)
-        text.firstMaterial?.diffuse.contents = UIColor.cyan
+        text.firstMaterial?.diffuse.contents = UIColor.green
         text.firstMaterial?.specular.contents = UIColor.white
         let textNode = SCNNode(geometry: text)
         textNode.position = SCNVector3(0.1, 0.1, -0.5)
@@ -227,11 +230,12 @@ extension ViewController {
         
         var sina = sin(Double(a.degreesToRadians))
         var cosa = cos(Double(a.degreesToRadians))
+        let arad = round(a.degreesToRadians/3.1415926*100)/100
         
         createVerticalLine(height: CGFloat(abs(sina*0.1)), px: cosa*0.1, py: 0.1*sina/2, pz: -0.5)
         sina = Double(round(sina*1000)/1000)
         cosa = Double(round(cosa*1000)/1000)
-        let str = "sin⍺ = \(sina)\ncos⍺ = \(cosa)"
+        let str = "⍺ = \(a) degrees\n⍺ = \(arad)π rad\nsin⍺ = \(sina)\ncos⍺ = \(cosa)"
         
         //get textNode and update textnode's string value
         if let textNode = theNodes?[1] {
