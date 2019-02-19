@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var clockWiseButton: UIButton! //for section1
     @IBOutlet weak var countClockWiseButton: UIButton!
     
-    let pickerContent: [String] = ["1. Unit Circle", "section2", "section3"]
+    let pickerContent: [String] = ["1. Unit Circle", "2. sin/cos Graphy", "section3"]
     var buttons = [UIButton]()
     
     
@@ -26,6 +26,7 @@ class ViewController: UIViewController {
     
     let configuration = ARWorldTrackingConfiguration()
     
+    // MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -82,10 +83,12 @@ class ViewController: UIViewController {
             clockWiseButton.isHidden = false
             countClockWiseButton.isHidden = false
         } else if _row == 1 {
+            theNodes = unitCircle()
+            coordinateSetup(a: .half, b: .one, c: .half)
         }
     }
     
-    //moveButton for 1.Unit circle
+    // MARK: RotationButtons of Unit circle
     var theAngle = 0
     @IBAction func clockWiseClicked(_ sender: UIButton) {
         if let myRootNode = theNodes?[0] {
@@ -101,7 +104,7 @@ class ViewController: UIViewController {
 }
 
 
-//: MARK pickview
+// MARK: pickview
 extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -123,6 +126,7 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 }
 
+// MARK: degree to radian transform for Integer
 extension Int {
     var degreesToRadians: Double {
         get {

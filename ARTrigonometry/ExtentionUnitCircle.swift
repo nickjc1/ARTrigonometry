@@ -9,7 +9,7 @@
 import UIKit
 import ARKit
 
-//: MARK ARObjects for unit circle
+// MARK: ARObjects for unit circle
 extension ViewController {
     
     func unitCircle() -> [SCNNode] {
@@ -115,7 +115,6 @@ extension ViewController {
         
         let action = SCNAction.rotateBy(x: 0, y: 0, z: rotateDegree, duration: 1)
         myRootNode.runAction(action)
-        
         
         var sina = sin(Double(a.degreesToRadians))
         var cosa = cos(Double(a.degreesToRadians))
