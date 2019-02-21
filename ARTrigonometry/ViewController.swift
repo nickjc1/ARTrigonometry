@@ -15,14 +15,27 @@ class ViewController: UIViewController {
     @IBOutlet weak var sectionButton: UIButton!
     @IBOutlet weak var sceneView: ARSCNView!
     @IBOutlet weak var picker: UIPickerView!
-    @IBOutlet weak var clockWiseButton: UIButton! //for section1
+    
+    // MARK: Buttons for Unit Circle
+    @IBOutlet weak var clockWiseButton: UIButton!
     @IBOutlet weak var countClockWiseButton: UIButton!
     
+    // MARK: sin/cos graphy view and buttons initialize
+    @IBOutlet weak var sinCosControlView: UIView!
+    @IBOutlet weak var parameterSubmmit: UIButton!
+    @IBOutlet weak var paraA: UISegmentedControl!
+    @IBOutlet weak var paraB: UISegmentedControl!
+    @IBOutlet weak var paraC: UISegmentedControl!
+    @IBOutlet weak var sinCos: UISegmentedControl!
+    @IBOutlet weak var graphyResetButton: UIButton!
+    
+    // MARK: PickerView Content array
     let pickerContent: [String] = ["1. Unit Circle", "2. sin/cos Graphy", "section3"]
+    
     var buttons = [UIButton]()
     
-    
-    var theNodes: [SCNNode]? // store some important scnNodes generate from functions in extension for later use.
+    // MARK: Store some important scnNodes generate from functions in extension for later use.
+    var theNodes: [SCNNode]?
     
     let configuration = ARWorldTrackingConfiguration()
     
@@ -38,13 +51,17 @@ class ViewController: UIViewController {
         picker.delegate = self
         picker.dataSource = self
         
+        // MARK: Initialize the userinterface when app first loaded.
         picker.isHidden = true
         sectionButton.isHidden = false
         
-//        sectionButton.backgroundColor = UIColor.white
+        sinCosControlView.isHidden = true //for section 2
+        sinCosControlView.layer.cornerRadius = 5 //round sinCosControlView corner
+        
         
         //add each section's buttons into an array for hidden when touch section selector button
-        buttons = [clockWiseButton, countClockWiseButton]
+        buttons = [clockWiseButton, countClockWiseButton, graphyResetButton]
+        
         for button in buttons {
             DispatchQueue.main.async {
                 button.isHidden = true
@@ -55,6 +72,7 @@ class ViewController: UIViewController {
     @IBAction func sectionButtonClicked(_ sender: UIButton) {
         picker.isHidden = false
         sectionButton.isHidden = true
+        sinCosControlView.isHidden = true
         
         for button in buttons {
             DispatchQueue.main.async {
@@ -79,28 +97,105 @@ class ViewController: UIViewController {
     // pickView will select which section should be run
     func arAnimation(for _row: Int) {
         if _row == 0 {
-            theNodes = unitCircle()
+            theNodes = unitCircle() //[0], [1]
+            stepDegree = 15
             clockWiseButton.isHidden = false
             countClockWiseButton.isHidden = false
         } else if _row == 1 {
-            theNodes = unitCircle()
-            coordinateSetup(a: .half, b: .one, c: .half)
+            stepDegree = 5
+            theNodes = unitCircle() //[0], [1]
+            sinCosControlView.isHidden = false
+            
         }
     }
     
     // MARK: RotationButtons of Unit circle
     var theAngle = 0
+    var stepDegree: Int?
     @IBAction func clockWiseClicked(_ sender: UIButton) {
         if let myRootNode = theNodes?[0] {
-            theAngle = action(myRootNode, clockWise: true, angle: theAngle)
+            theAngle = action(myRootNode, clockWise: true, angle: theAngle, stepDegree: 15)
         }
     }
     
     @IBAction func countClockWiseClicked(_ sender: UIButton) {
-        if let myRootNode = theNodes?[0] {
-            theAngle = action(myRootNode, clockWise: false, angle: theAngle)
+        
+        if theAngle < 720 {
+            if let myRootNode = theNodes?[0] {
+                theAngle = action(myRootNode, clockWise: false, angle: theAngle, stepDegree: stepDegree!)
+            }
+        }
+        
+        if theNodes?.count == 3, let sec2RN = theNodes?[2] {
+            var position = getPositionForDrawing(sec2RN, angle: theAngle)
+            drawGraphy(myRN: sec2RN, position: position, color: UIColor.red)
+            let index: [Int] = [paraA.selectedSegmentIndex, paraB.selectedSegmentIndex, paraC.selectedSegmentIndex]
+            
+            //draw a standard tri func: eg: y = sinx
+            paraA.selectedSegmentIndex = 1
+            paraB.selectedSegmentIndex = 1
+            paraC.selectedSegmentIndex = 1
+            position = getPositionForDrawing(sec2RN, angle: theAngle)
+            drawGraphy(myRN: sec2RN, position: position, color: UIColor.blue)
+            
+            //giving back the index set by user
+            paraA.selectedSegmentIndex = index[0]
+            paraB.selectedSegmentIndex = index[1]
+            paraC.selectedSegmentIndex = index[2]
+        }
+        
+    }
+    
+    // MARK: Buttons Clicked for sin/cos graphy draw of section2
+    @IBAction func paraSubmitClicked(_ sender: UIButton) {
+        let pa: parameter = paraOutput(parameter: paraA)
+        let pb: parameter = paraOutput(parameter: paraB)
+        let pc: parameter = paraOutput(parameter: paraC)
+        var triFunc: String
+        switch sinCos.selectedSegmentIndex {
+        case 0: triFunc = "sin"
+        default: triFunc = "cos"
+        }
+        
+        let sec2RN = self.coordinateSetup()
+        theNodes?.append(sec2RN) //[2]
+        triFuncGenerate(pa, pb, pc, triFunc, myRN: sec2RN, yPosition: 0.5, textColor: UIColor.red)
+        triFuncGenerate(.one, .one, .one, triFunc, myRN: sec2RN, yPosition: 0.45, textColor: UIColor.blue)
+        
+        sinCosControlView.isHidden = true
+        countClockWiseButton.isHidden = false
+        graphyResetButton.isHidden = false
+    }
+    
+    func paraOutput(parameter: UISegmentedControl) -> parameter {
+        switch parameter.selectedSegmentIndex {
+        case 0: return .half
+        case 1: return .one
+        default:  return .twice
         }
     }
+    
+    @IBAction func graphyResetClicked(_ sender: UIButton) {
+        if let sec2RN = theNodes?[2] {
+            sec2RN.enumerateChildNodes { (node, _) in
+//                if node.name == "dot" {
+//                    node.removeFromParentNode()
+//                }
+//                if node.name == "triFunName" {
+//                    node.removeFromParentNode()
+//                }
+                node.removeFromParentNode()
+            }
+        }
+        theAngle = 0
+        theNodes?.remove(at: 2) // remove the sec2RN from theNodes[]
+        sinCosControlView.isHidden = false
+        countClockWiseButton.isHidden = true
+        graphyResetButton.isHidden = true
+    }
+    
+    
+    
 }
 
 

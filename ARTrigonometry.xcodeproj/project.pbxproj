@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DF2376B122172A7300CD7AE1 /* ExtentionUnitCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2376B022172A7300CD7AE1 /* ExtentionUnitCircle.swift */; };
 		DF2376B322177D9C00CD7AE1 /* ExtensionOfTriGraphy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2376B222177D9C00CD7AE1 /* ExtensionOfTriGraphy.swift */; };
+		DF7753DC221DE2D600E3A035 /* reset.png in Resources */ = {isa = PBXBuildFile; fileRef = DF7753DB221DE2D500E3A035 /* reset.png */; };
 		DF90DA6E2204E18D009CC3F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF90DA6D2204E18D009CC3F9 /* AppDelegate.swift */; };
 		DF90DA702204E18D009CC3F9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF90DA6F2204E18D009CC3F9 /* ViewController.swift */; };
 		DF90DA732204E18D009CC3F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF90DA712204E18D009CC3F9 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		DF2376B022172A7300CD7AE1 /* ExtentionUnitCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtentionUnitCircle.swift; sourceTree = "<group>"; };
 		DF2376B222177D9C00CD7AE1 /* ExtensionOfTriGraphy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionOfTriGraphy.swift; sourceTree = "<group>"; };
+		DF7753DB221DE2D500E3A035 /* reset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reset.png; sourceTree = "<group>"; };
 		DF90DA6A2204E18D009CC3F9 /* ARTrigonometry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARTrigonometry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF90DA6D2204E18D009CC3F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF90DA6F2204E18D009CC3F9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				DF2376B222177D9C00CD7AE1 /* ExtensionOfTriGraphy.swift */,
 				DF90DA712204E18D009CC3F9 /* Main.storyboard */,
 				DF90DA742204E18E009CC3F9 /* Assets.xcassets */,
+				DF7753DB221DE2D500E3A035 /* reset.png */,
 				DF94C451220DDA1700D0171C /* plus.png */,
 				DF94C453220DDA1E00D0171C /* minus.png */,
 				DF90DA7F2205094A009CC3F9 /* section.png */,
@@ -137,6 +140,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF7753DC221DE2D600E3A035 /* reset.png in Resources */,
 				DF90DA782204E18E009CC3F9 /* LaunchScreen.storyboard in Resources */,
 				DF94C452220DDA1700D0171C /* plus.png in Resources */,
 				DF94C454220DDA1E00D0171C /* minus.png in Resources */,

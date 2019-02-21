@@ -101,16 +101,16 @@ extension ViewController {
     }
     
     
-    func action(_ myRootNode: SCNNode, clockWise: Bool, angle: Int) -> Int {
+    func action(_ myRootNode: SCNNode, clockWise: Bool, angle: Int, stepDegree: Int) -> Int {
         
         var rotateDegree: CGFloat
         var a = angle
         if clockWise {
-            rotateDegree = CGFloat(-15.degreesToRadians)
-            a -= 15
+            rotateDegree = CGFloat(-stepDegree.degreesToRadians)
+            a -= stepDegree
         } else {
-            rotateDegree = CGFloat(15.degreesToRadians)
-            a += 15
+            rotateDegree = CGFloat(stepDegree.degreesToRadians)
+            a += stepDegree
         }
         
         let action = SCNAction.rotateBy(x: 0, y: 0, z: rotateDegree, duration: 1)
