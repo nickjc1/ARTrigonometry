@@ -112,21 +112,12 @@ class ViewController: UIViewController {
         }
         
         if theNodes?.count == 3, let sec2RN = theNodes?[2] {
-            var position = getPositionForDrawing(sec2RN, angle: theAngle)
+            var position = getPositionForDrawing(sec2RN, angle: theAngle, isForOriginalTri: false)
             drawGraphy(myRN: sec2RN, position: position, color: UIColor.red)
-            let index: [Int] = [paraA.selectedSegmentIndex, paraB.selectedSegmentIndex, paraC.selectedSegmentIndex]
+//            let index: [Int] = [paraA.selectedSegmentIndex, paraB.selectedSegmentIndex, paraC.selectedSegmentIndex]
             
-            //draw a standard tri func: eg: y = sinx
-            paraA.selectedSegmentIndex = 1
-            paraB.selectedSegmentIndex = 1
-            paraC.selectedSegmentIndex = 1
-            position = getPositionForDrawing(sec2RN, angle: theAngle)
+            position = getPositionForDrawing(sec2RN, angle: theAngle, isForOriginalTri: true)
             drawGraphy(myRN: sec2RN, position: position, color: UIColor.blue)
-            
-            //giving back the index set by user
-            paraA.selectedSegmentIndex = index[0]
-            paraB.selectedSegmentIndex = index[1]
-            paraC.selectedSegmentIndex = index[2]
         }
         
     }
@@ -156,7 +147,8 @@ class ViewController: UIViewController {
         switch parameter.selectedSegmentIndex {
         case 0: return .half
         case 1: return .one
-        default:  return .twice
+        case 2:  return .twice
+        default: return .negOne
         }
     }
     
@@ -178,7 +170,7 @@ class ViewController: UIViewController {
         graphyResetButton.isHidden = true
         
         //recreate a unit circle
-       theNodes = unitCircle()
+        theNodes = unitCircle()
     }
     
     
@@ -218,7 +210,6 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             stepDegree = 5
             theNodes = unitCircle() //[0], [1]
             sinCosControlView.isHidden = false
-            
         }
     }
 }

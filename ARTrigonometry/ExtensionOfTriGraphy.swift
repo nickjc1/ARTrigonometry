@@ -13,6 +13,7 @@ enum parameter: Double {
     case half = 0.5
     case one = 1.0
     case twice = 2.0
+    case negOne = -1.0
 }
 
 // MARK: extension for sin/cos graphy
@@ -122,6 +123,8 @@ extension ViewController {
             c = " + 0.5π"
         } else if pc == .one {
             c = ""
+        } else if pc == .negOne{
+            c = " - π"
         } else {
             c = " + π"
         }
@@ -139,13 +142,22 @@ extension ViewController {
     }
     
     // MARK: Calculate each dot's position on coordinate
-    func  getPositionForDrawing(_ sec2RN: SCNNode, angle: Int) -> SCNVector3 {
+    func  getPositionForDrawing(_ sec2RN: SCNNode, angle: Int, isForOriginalTri: Bool) -> SCNVector3 {
         let hLen: Double = 0.8
         let totalDegree: Int = 720
         
-        let a = paraOutput(parameter: paraA)
-        let b = paraOutput(parameter: paraB)
-        let c = paraOutput(parameter: paraC)
+        // if the position is for standard trig function such as y = sinx, will set a, b to 1 and c to 0; otherwise will use user's submittion
+        var a: parameter, b: parameter, c: parameter
+        if !isForOriginalTri {
+            a = paraOutput(parameter: paraA)
+            b = paraOutput(parameter: paraB)
+            c = paraOutput(parameter: paraC)
+        } else {
+            a = .one
+            b = .one
+            c = .one
+        }
+        
         
         //test
 //        print(b.rawValue)
@@ -165,6 +177,8 @@ extension ViewController {
             cRad = 0.5*Double.pi
         } else if c == .one {
             cRad = 0
+        } else if c == .negOne {
+            cRad = -Double.pi/2.0
         } else {
             cRad = Double.pi
         }
