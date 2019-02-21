@@ -161,22 +161,24 @@ class ViewController: UIViewController {
     }
     
     @IBAction func graphyResetClicked(_ sender: UIButton) {
-        if let sec2RN = theNodes?[2] {
-            sec2RN.enumerateChildNodes { (node, _) in
-//                if node.name == "dot" {
-//                    node.removeFromParentNode()
-//                }
-//                if node.name == "triFunName" {
-//                    node.removeFromParentNode()
-//                }
-                node.removeFromParentNode()
-            }
+//        if let sec2RN = theNodes?[2] {
+//            sec2RN.enumerateChildNodes { (node, _) in
+//                node.removeFromParentNode()
+//            }
+//        }
+        sceneView.scene.rootNode.enumerateChildNodes {
+            (node, _) in
+            node.removeFromParentNode()
         }
         theAngle = 0
-        theNodes?.remove(at: 2) // remove the sec2RN from theNodes[]
+        
+//        theNodes?.remove(at: 2) // remove the sec2RN from theNodes[]
         sinCosControlView.isHidden = false
         countClockWiseButton.isHidden = true
         graphyResetButton.isHidden = true
+        
+        //recreate a unit circle
+       theNodes = unitCircle()
     }
     
     
