@@ -18,6 +18,7 @@ enum parameter: Double {
 // MARK: extension for sin/cos graphy
 extension ViewController {
     
+    // MARK: generate the coordinate for sin/cos graphy
     func coordinateSetup(/*b: parameter*/) -> SCNNode {
         
         let hLength: Double = 0.8
@@ -99,6 +100,7 @@ extension ViewController {
         return sec2RN
     }
     
+    // MARK: put a dot(ball) in real world based on the coordinate
     func drawGraphy(myRN: SCNNode, position: SCNVector3, color: UIColor) {
         let dot = SCNSphere(radius: 0.004)
         dot.firstMaterial?.diffuse.contents = color
@@ -109,6 +111,8 @@ extension ViewController {
         myRN.addChildNode(dotNode)
     }
     
+    
+    // MARK: generate a scntext to show what trig function are going to draw
     func triFuncGenerate(_ pa: parameter, _ pb: parameter, _ pc: parameter, _ tri: String, myRN: SCNNode, yPosition: Double, textColor: UIColor) {
         let a = pa.rawValue == 1.0 ? "" : String(pa.rawValue)
         let b = pb.rawValue == 1.0 ? "" : String(pb.rawValue)

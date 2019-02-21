@@ -94,21 +94,6 @@ class ViewController: UIViewController {
         sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
     }
     
-    // pickView will select which section should be run
-    func arAnimation(for _row: Int) {
-        if _row == 0 {
-            theNodes = unitCircle() //[0], [1]
-            stepDegree = 15
-            clockWiseButton.isHidden = false
-            countClockWiseButton.isHidden = false
-        } else if _row == 1 {
-            stepDegree = 5
-            theNodes = unitCircle() //[0], [1]
-            sinCosControlView.isHidden = false
-            
-        }
-    }
-    
     // MARK: RotationButtons of Unit circle
     var theAngle = 0
     var stepDegree: Int?
@@ -158,7 +143,7 @@ class ViewController: UIViewController {
         }
         
         let sec2RN = self.coordinateSetup()
-        theNodes?.append(sec2RN) //[2]
+        theNodes?.append(sec2RN) // theNodes[2] is sec2RN
         triFuncGenerate(pa, pb, pc, triFunc, myRN: sec2RN, yPosition: 0.5, textColor: UIColor.red)
         triFuncGenerate(.one, .one, .one, triFunc, myRN: sec2RN, yPosition: 0.45, textColor: UIColor.blue)
         
@@ -218,6 +203,21 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         arAnimation(for: row)
         picker.isHidden = true
         sectionButton.isHidden = false
+    }
+    
+    // pickView will select which section should be run
+    func arAnimation(for _row: Int) {
+        if _row == 0 {
+            theNodes = unitCircle() //[0], [1]
+            stepDegree = 15
+            clockWiseButton.isHidden = false
+            countClockWiseButton.isHidden = false
+        } else if _row == 1 {
+            stepDegree = 5
+            theNodes = unitCircle() //[0], [1]
+            sinCosControlView.isHidden = false
+            
+        }
     }
 }
 
