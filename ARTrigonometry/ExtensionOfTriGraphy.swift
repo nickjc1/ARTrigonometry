@@ -137,25 +137,34 @@ extension ViewController {
         let triNode = SCNNode(geometry: triFunc)
         triNode.name = "triFunText"
         triNode.scale = SCNVector3(0.003, 0.003, 0.003)
-        triNode.position = SCNVector3(0, yPosition, 0)
+        triNode.position = SCNVector3(-0.4, yPosition, 0)
         myRN.addChildNode(triNode)
     }
     
     // MARK: Calculate each dot's position on coordinate
-    func  getPositionForDrawing(_ sec2RN: SCNNode, angle: Int, isForOriginalTri: Bool) -> SCNVector3 {
+    func  getPositionForDrawing(_ sec2RN: SCNNode, angle: Int, isFirst: Bool) -> SCNVector3 {
         let hLen: Double = 0.8
         let totalDegree: Int = 720
-        
+        var sinORCos: Int
         // if the position is for standard trig function such as y = sinx, will set a, b to 1 and c to 0; otherwise will use user's submittion
         var a: parameter, b: parameter, c: parameter
-        if !isForOriginalTri {
+        if !isFirst {
             a = paraOutput(parameter: paraA)
             b = paraOutput(parameter: paraB)
             c = paraOutput(parameter: paraC)
+            sinORCos = sinCos.selectedSegmentIndex
         } else {
-            a = .one
-            b = .one
-            c = .one
+            if let parameters = firstFuncPara, let index = firstTrifuncIndex {
+                a = parameters[0]
+                b = parameters[1]
+                c = parameters[2]
+                sinORCos = index
+            } else { //this else should never run, just for compile
+                a = .one
+                b = .one
+                c = .one
+                sinORCos = sinCos.selectedSegmentIndex
+            }
         }
         
         
@@ -184,7 +193,7 @@ extension ViewController {
         }
         
         var y: Double
-        if sinCos.selectedSegmentIndex == 0 {
+        if sinORCos == 0 {
             y = 0.2 * (a.rawValue * sin(b.rawValue * angle.degreesToRadians + cRad))
         } else {
             y = 0.2 * (a.rawValue * cos(b.rawValue * angle.degreesToRadians + cRad))

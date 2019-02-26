@@ -18,9 +18,13 @@
 		DF90DA802205094A009CC3F9 /* section.png in Resources */ = {isa = PBXBuildFile; fileRef = DF90DA7F2205094A009CC3F9 /* section.png */; };
 		DF94C452220DDA1700D0171C /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = DF94C451220DDA1700D0171C /* plus.png */; };
 		DF94C454220DDA1E00D0171C /* minus.png in Resources */ = {isa = PBXBuildFile; fileRef = DF94C453220DDA1E00D0171C /* minus.png */; };
+		E4F313DA5D7C87695C90FEDB /* Pods_ARTrigonometry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 295C1B03269F073CCBD15040 /* Pods_ARTrigonometry.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F77A1A8C83C05FFE883AF8E /* Pods-ARTrigonometry.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARTrigonometry.release.xcconfig"; path = "Target Support Files/Pods-ARTrigonometry/Pods-ARTrigonometry.release.xcconfig"; sourceTree = "<group>"; };
+		295C1B03269F073CCBD15040 /* Pods_ARTrigonometry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARTrigonometry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		56EC91D211AC45C055679CD0 /* Pods-ARTrigonometry.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARTrigonometry.debug.xcconfig"; path = "Target Support Files/Pods-ARTrigonometry/Pods-ARTrigonometry.debug.xcconfig"; sourceTree = "<group>"; };
 		DF2376B022172A7300CD7AE1 /* ExtentionUnitCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtentionUnitCircle.swift; sourceTree = "<group>"; };
 		DF2376B222177D9C00CD7AE1 /* ExtensionOfTriGraphy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionOfTriGraphy.swift; sourceTree = "<group>"; };
 		DF7753DB221DE2D500E3A035 /* reset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reset.png; sourceTree = "<group>"; };
@@ -41,17 +45,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4F313DA5D7C87695C90FEDB /* Pods_ARTrigonometry.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23717097AD82C0AADBA33921 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				56EC91D211AC45C055679CD0 /* Pods-ARTrigonometry.debug.xcconfig */,
+				1F77A1A8C83C05FFE883AF8E /* Pods-ARTrigonometry.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DF3D7526A985023BC5E94493 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				295C1B03269F073CCBD15040 /* Pods_ARTrigonometry.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DF90DA612204E18C009CC3F9 = {
 			isa = PBXGroup;
 			children = (
 				DF90DA6C2204E18D009CC3F9 /* ARTrigonometry */,
 				DF90DA6B2204E18D009CC3F9 /* Products */,
+				23717097AD82C0AADBA33921 /* Pods */,
+				DF3D7526A985023BC5E94493 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,6 +114,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DF90DA7C2204E18E009CC3F9 /* Build configuration list for PBXNativeTarget "ARTrigonometry" */;
 			buildPhases = (
+				FE0E04D8EBFF4788A13CB098 /* [CP] Check Pods Manifest.lock */,
 				DF90DA662204E18D009CC3F9 /* Sources */,
 				DF90DA672204E18D009CC3F9 /* Frameworks */,
 				DF90DA682204E18D009CC3F9 /* Resources */,
@@ -151,6 +177,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FE0E04D8EBFF4788A13CB098 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ARTrigonometry-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DF90DA662204E18D009CC3F9 /* Sources */ = {
@@ -304,6 +355,7 @@
 		};
 		DF90DA7D2204E18E009CC3F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56EC91D211AC45C055679CD0 /* Pods-ARTrigonometry.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -322,6 +374,7 @@
 		};
 		DF90DA7E2204E18E009CC3F9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F77A1A8C83C05FFE883AF8E /* Pods-ARTrigonometry.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -77,9 +77,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ugd-Cy-BJ4">
                                 <rect key="frame" x="198" y="773" width="438" height="188"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" y = A sin/cos (Bx + C)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wdb-HF-o8Q">
-                                        <rect key="frame" x="123" y="8" width="192" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Set up parameters for y=Asin/cos(Bx+C)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wdb-HF-o8Q">
+                                        <rect key="frame" x="63.5" y="8" width="311.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -222,6 +222,7 @@
                         <outlet property="sceneView" destination="fE0-nW-Mf0" id="71W-R5-7ZR"/>
                         <outlet property="sectionButton" destination="hkp-zW-HJi" id="Dqa-o4-BAW"/>
                         <outlet property="sinCos" destination="USH-tr-4qM" id="j5A-Im-hTm"/>
+                        <outlet property="sinCosControlTitle" destination="Wdb-HF-o8Q" id="hjq-9z-5wp"/>
                         <outlet property="sinCosControlView" destination="Ugd-Cy-BJ4" id="NaP-pX-YHe"/>
                     </connections>
                 </viewController>

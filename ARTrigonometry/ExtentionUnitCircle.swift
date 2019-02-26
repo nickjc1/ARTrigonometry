@@ -113,7 +113,7 @@ extension ViewController {
             a += stepDegree
         }
         
-        let action = SCNAction.rotateBy(x: 0, y: 0, z: rotateDegree, duration: 1)
+        let action = SCNAction.rotateBy(x: 0, y: 0, z: rotateDegree, duration: 0.5)
         myRootNode.runAction(action)
         
         var sina = sin(Double(a.degreesToRadians))
