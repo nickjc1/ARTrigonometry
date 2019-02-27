@@ -173,14 +173,14 @@ class ViewController: UIViewController {
             firstTrifuncIndex = sinCos.selectedSegmentIndex
             
             paraSubmitClickCount += 1
-            sinCosControlTitle.text = "Set up parameters for compare func: y=Asin/cos(Bx+C)"
+            sinCosControlTitle.text = "Set up parameters for compare func: y2=Asin/cos(Bx+C)"
         } else {
             triFuncGenerate(pa, pb, pc, triFunc, myRN: sec2RN!, yPosition: 0.4, textColor: UIColor.blue)
             sinCosControlView.isHidden = true
             countClockWiseButton.isHidden = false
             graphyResetButton.isHidden = false
             paraSubmitClickCount = 1
-            sinCosControlTitle.text = "Set up parameters for y=Asin/cos(Bx+C)"
+            sinCosControlTitle.text = "Set up parameters for y1=Asin/cos(Bx+C)"
         }
         
     }
